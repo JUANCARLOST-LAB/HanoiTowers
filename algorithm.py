@@ -11,13 +11,14 @@ colors = [
 # Class representing the hole system
 class HanoiTower:
 
-    disks = []
-    towers = []
-    historyOfMoves = []
+
     def __init__(self, numberOfDisks):
         self.numberOfDisks = numberOfDisks
         self.solved = False
         self.numberOfMoves = 0
+        self.disks = []
+        self.towers = []
+        self.historyOfMoves = []
 
         for i in range(3):
             self.towers.append( Tower ( i + 1 ) )
@@ -35,10 +36,9 @@ class HanoiTower:
         self.historyOfMoves.append( (self.disks[ disk - 1 ], self.disks[ disk - 1 ].tower ) )
         self.disks[ disk-1 ].moveTo( self.towers[ tower - 1 ], self.numberOfMoves)
         self.numberOfMoves += 1
-
         if tower == 3 and self.towers[tower-1].size == self.numberOfDisks:
             self.solved = True
-            print(f"Congratulations! You solved the Hanoi Tower in {self.numberOfMoves} number of moves")
+            # print(f"Congratulations! You solved the Hanoi Tower in {self.numberOfMoves} number of moves")
     
     # Function that solves the game
     def solve(self):

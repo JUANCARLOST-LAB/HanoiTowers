@@ -6,8 +6,8 @@ class Grid:
 
     def __init__(self, towers):
         self.HanoiTower = HanoiTower(towers)
-        self.disks = HanoiTower.disks
-        self.towers = HanoiTower.towers 
+        self.disks = self.HanoiTower.disks
+        self.towers = self.HanoiTower.towers 
         self.tower_specs = Tower(2)
         self.width = 1000
         self.height = 600
