@@ -2,11 +2,15 @@ import pygame
 import sys
 from grid import Grid
 
+
 # Set game
 
 pygame.init()
 pygame.font.init()
 
+
+
+# Information for fame
 initial_disks = 3
 counter = 0
 dark_blue = (44, 44, 127)
@@ -14,9 +18,11 @@ game_screen = Grid(initial_disks)
 smallfont = pygame.font.SysFont('Corbel',60)
 font = pygame.font.SysFont('Arial', 30)
 
+# Buttons for adding and decreasing number of disks
 plus_button = pygame.Rect(840, 100, 50, 50)
 minus_button = pygame.Rect(840, 150, 50, 50)
 
+# Set game screen and caption
 screen = pygame.display.set_mode((game_screen.width, game_screen.height))
 pygame.display.set_caption("Hanoi Towers")
 
@@ -78,7 +84,7 @@ while True:
             over_tower, destiny_tower = game_screen.over_tower(xCoord, yCoord)
             if over_tower:
                 try:
-                   game_screen.HanoiTower.makeMove(disk_grabed.diskSize, destiny_tower.towerNumber)
+                    game_screen.HanoiTower.makeMove(disk_grabed.diskSize, destiny_tower.towerNumber)
                 except Exception as error:
                     print("error ", error)
                     disk_grabed.tower.insert(disk_grabed)
@@ -106,6 +112,7 @@ while True:
     # Drawing
     screen.fill(dark_blue)
     game_screen.draw(screen)
+    game_screen.draw_cursor(screen, xCoord, yCoord)
     txtsurf = font.render(f"Moves: {game_screen.HanoiTower.numberOfMoves}", False, (255,255,255))
     screen.blit(txtsurf,(840, 50))
     pygame.draw.rect(screen,(0, 255, 0) ,plus_button)

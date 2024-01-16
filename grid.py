@@ -21,6 +21,10 @@ class Grid:
             disk_rect = pygame.Rect(disk.get_disk_rect())
             pygame.draw.rect(screen, disk.color, disk_rect)
     
+    def draw_cursor(self,screen, xCoord, yCoord):
+        cursor_rect = pygame.Rect(xCoord, yCoord, 10, 10)
+        pygame.draw.rect(screen, (0,255,0), cursor_rect)
+    
     def over_disk(self, xCoord, yCoord):
         for tower in self.towers:
             top_disk = tower.topElement()
